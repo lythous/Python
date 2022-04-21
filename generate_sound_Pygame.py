@@ -24,7 +24,7 @@ def delay(t, wave, d):
     new_wave = np.delete(new_wave, range(wave.size-delay_samples, wave.size))
     return new_wave
 
-t_end=10                                # End time
+t_end = 10                              # End time
 sr = 44100                              # Sample rate
 t = np.linspace(0, t_end, t_end*sr)     # Generate time array
 
@@ -37,7 +37,7 @@ wave += 0.2*exp(t, -3)*delay(t, wave, 1)
 wave = np.stack((wave, wave))           # 2 Dimensional array for 2 channels of stero sound
 wave = wave.T                           # Array shape must be Nx2
 wave = wave.copy(order='C')             # NP array to be fed to Pygame must be "Contiguous layout"
-plt.plot(t,wave.T[0])                   # Plot one of wave channels
+plt.plot(t, wave.T[0])                  # Plot one of wave channels
 wave = wave.astype('int8')              # Array to be fed to Pygame must be integer and between -127...+127
 
 pygame.mixer.init()                     # Initial pygame sound mixer
